@@ -1,0 +1,58 @@
+{
+  "name": "vscode-figma-embed",
+  "displayName": "VS Code Figma Embed",
+  "description": "Embedding Figma in VS Code",
+  "version": "0.0.1",
+  "publisher": "jakealbaugh",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint . --ext .ts,.tsx",
+    "watch": "tsc -watch -p ./"
+  },
+  "engines": {
+    "vscode": "^1.34.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.figma",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "capabilities": {
+      "hoverProvider": "true"
+    },
+    "commands": [
+      {
+        "command": "extension.figma-embed-preview",
+        "title": "Figma Embed Preview"
+      }
+    ],
+    "grammars": [
+      {
+        "injectTo": [
+          "source.js.jsx",
+          "source.ts.tsx",
+          "source.js",
+          "source.ts"
+        ],
+        "scopeName": "figma.injection",
+        "path": "./syntaxes/injection.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.0",
+    "@types/vscode": "^1.34.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.0",
+    "@typescript-eslint/parser": "^4.16.0",
+    "eslint": "^7.21.0",
+    "typescript": "^4.2.2"
+  }
+}

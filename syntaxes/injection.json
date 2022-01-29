@@ -1,0 +1,27 @@
+{
+  "scopeName": "figma.injection",
+  "injectionSelector": "L:comment.block.documentation",
+  "patterns": [{ "include": "#extension" }],
+  "repository": {
+    "extension": {
+      "patterns": [{ "include": "#expression" }]
+    },
+    "uri": {
+      "match": "[^ \n]+",
+      "name": "entity.name.function.uri.figma"
+    },
+    "url": {
+      "match": "https://www.figma.com/embed\\?[^ \n]+",
+      "name": "entity.name.function.url.figma"
+    },
+    "expression": {
+      "begin": "@figma ",
+      "end": "\n",
+      "beginCaptures": {
+        "0": { "name": "storage.figma" }
+      },
+      "name": "expression.group",
+      "patterns": [{ "include": "#url" }, { "include": "#uri" }]
+    }
+  }
+}
